@@ -1,0 +1,46 @@
+version: '3.6'
+
+services:
+  db:
+    container_name: ms
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - '3306:3306'
+    networks:
+      - tc-network
+
+  api:
+    container_name: tc-api
+    command: npm run startDev
+    build: ./server
+    working_dir: /usr/src/twitter-clone-api
+    env_file:
+      - .env
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./server:/usr/src/twitter-clone-api
+    networks:
+      - tc-network
+
+  client:
+    container_name: twitter-clone
+    command: npm start
+    build: ./client
+    working_dir: /usr/src/twitter-clone
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/usr/src/twitter-clone
+    links:
+      - api
+    networks:
+      - tc-network
+
+networks:
+  tc-network:
+    driver: bridge
