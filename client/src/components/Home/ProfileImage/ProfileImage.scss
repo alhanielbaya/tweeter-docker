@@ -1,0 +1,21 @@
+.profile-pic {
+  img {
+    border-radius: 50%;
+    height: inherit;
+    width: inherit;
+  }
+  width: 39px;
+  height: 39px;
+  margin-right: 0.5rem;
+}
+
+@media only screen and (min-width: 400px) {
+  .profile-pic {
+    width: 47px;
+    height: 47px;
+    margin-right: 0.5rem;
+    img {
+      border-radius: 50%;
+    }
+  }
+}

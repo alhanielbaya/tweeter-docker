@@ -1,0 +1,191 @@
+@import '../../../variables';
+.tweet-container {
+  padding: 8px 18px 0 18px;
+  border-bottom: 1px solid $stroke;
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+  .actual-tweet {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    .headers {
+      display: flex;
+      justify-content: flex-start;
+      flex-flow: row wrap;
+      max-width: 100%;
+      margin: 0 0 4px 0;
+      font-size: 16px;
+      .user-name {
+        white-space: nowrap;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: bold;
+        line-height: 23px;
+        display: flex;
+        align-items: center;
+        margin: 0 13px 0 0;
+
+        color: #000000;
+      }
+
+      .at-sign {
+        white-space: nowrap;
+        font-size: 16px;
+        margin: 0 1rem 0 0;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+
+        /* secondary text */
+
+        color: $secondaryText;
+      }
+
+      .time {
+        cursor: default;
+        margin: 0;
+        white-space: nowrap;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 21px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+        color: $secondaryText;
+      }
+    }
+
+    .text {
+      p {
+        max-width: 100%;
+        word-wrap: break-word;
+        margin: 0;
+        font-family: Ubuntu;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        // line-height: 22px;
+        /* or 137% */
+
+        color: $text;
+      }
+    }
+
+    .icons {
+      margin: 8px 0 11px 0;
+      font-size: 24px;
+
+      width: 100%;
+
+      .follow {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        max-width: 10rem;
+        margin-top: 0.2rem;
+        border: 0;
+        margin: 0;
+        background: none;
+        i {
+          width: 24px;
+          height: 24px;
+          color: #000000;
+        }
+
+        p {
+          margin: 0;
+          color: $primary;
+          margin-left: 8px;
+          font-size: 16px;
+          text-decoration: underline;
+        }
+      }
+
+      .follow:hover {
+        i {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 400px) {
+  .tweet-container {
+    .actual-tweet {
+      max-width: 85%;
+      .headers {
+        margin: 0 0 8px 0;
+        .user-name {
+        }
+        .at-sign {
+        }
+        .time {
+        }
+      }
+
+      .text {
+        p {
+        }
+      }
+
+      .icons {
+        .follow {
+          i {
+          }
+
+          p {
+          }
+        }
+
+        .follow:hover {
+          i {
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .tweet-container {
+    .actual-tweet {
+      max-width: 90%;
+      .headers {
+        margin: 0 0 8px 0;
+        .user-name {
+        }
+        .at-sign {
+        }
+        .time {
+        }
+      }
+
+      .text {
+        p {
+        }
+      }
+
+      .icons {
+        .follow {
+          i {
+          }
+
+          p {
+          }
+        }
+
+        .follow:hover {
+          i {
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import '../../../variables';
+.nav-container {
+  border-bottom: 1px solid $stroke;
+  padding: 0 1.125rem;
+  height: 53px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    transition: all 0.25s ease-in-out;
+    cursor: pointer;
+    font-weight: bolder;
+    margin: 0;
+    margin-right: 0.5625rem;
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  .activated-nav {
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    background: yellow;
+    padding: 8px;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1;
+  }
+
+  h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    margin: 0;
+
+    color: #000000;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .nav-container {
+    svg {
+      color: yellow;
+      g {
+        color: yellow;
+      }
+      path {
+        color: yellow;
+      }
+    }
+
+    .activated-nav {
+      position: fixed;
+      width: 57px;
+      height: 57px;
+      background: yellow;
+      padding: 10px;
+      top: 1.5rem;
+      left: 2rem;
+      z-index: 1;
+    }
+  }
+}

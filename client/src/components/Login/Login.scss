@@ -1,0 +1,91 @@
+$fill: #ffffff;
+$stroke: #e6ecf0;
+$text: #000000;
+$secondaryText: #9197a3;
+
+.login-page-container {
+  position: relative;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid $stroke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  padding: 2rem 0 2rem 0;
+
+  .icon-container {
+    height: 142px;
+    button {
+      margin: auto 0 auto 0;
+    }
+  }
+
+  .text-container {
+    margin: 0.5rem 0 auto 0;
+    text-align: center;
+    h1 {
+      font-weight: bolder;
+    }
+  }
+
+  .facebook-container {
+    border: 1px solid $stroke;
+    display: none;
+    svg {
+      width: 64px;
+      height: 64px;
+      font-size: 64px;
+      margin: 0.5rem 0;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 13rem;
+    margin: 1rem 0 auto 0;
+    padding-bottom: 1rem;
+  }
+  .google-container {
+    border: 1px solid $stroke;
+    svg {
+      width: 64px;
+      height: 64px;
+      font-size: 64px;
+      margin: 0.5rem 0;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 13rem;
+    margin: 1rem 0 auto 0;
+    padding-bottom: 1rem;
+  }
+
+  .back-to-home {
+    position: absolute;
+    align-self: center;
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .login-page-container {
+    padding: 0;
+    .text-container {
+      margin: auto 0 auto 0;
+    }
+  }
+}
+
+@media only screen and (max-height: 600px) {
+  .login-page-container {
+    padding: 0;
+    .text-container {
+      margin: 1rem 0 auto 0;
+    }
+  }
+}
