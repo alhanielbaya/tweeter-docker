@@ -4,16 +4,11 @@ A twitter clone.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Getting started
-
-This project uses docker and docker-compose.
+This project requires docker and docker-compose in order for the dev environment to run.
 
 
 ```
 docker-compose up --build
-
 ```
 Just type this on the root folder to start the dev environment.
 
