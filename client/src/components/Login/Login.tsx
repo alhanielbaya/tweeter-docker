@@ -3,16 +3,16 @@ import React from 'react';
 import './Login.scss';
 
 import { GoogleLogin } from 'react-google-login';
-import { googleSuccess, googleFailure } from '../../oauth-helpers/google';
+import { googleSuccess } from '../../oauth-helpers/google';
 import FacebookLogin from 'react-facebook-login';
 import { facebookSuccess } from '../../oauth-helpers/facebook';
-import { useHistory, Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 import { setAuth, setProfile } from '../../store/user/userActions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Axios from 'axios';
 import { Iprofile } from '../../oauth-helpers/oauthTypes';
 
-const Login: React.FC = props => {
+const Login: React.FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -69,7 +69,7 @@ const Login: React.FC = props => {
             </button>
           )}
           onSuccess={handleGoogle}
-          onFailure={googleFailure}
+          onFailure={() => 0}
           cookiePolicy={'single_host_origin'}
         />
       </div>

@@ -22,7 +22,7 @@ export async function sanitizeInput(profile: Iprofile): Promise<Iprofile> {
 }
 
 export function login(data: { profile: Iprofile }, cb: (x: boolean) => void) {
-  axios.post('/auth/login', data).then((res: { status: number }) => {
+  axios.post('auth/login', data).then((res: { status: number }) => {
     if (res.status === 200) {
       cb(true);
     } else {

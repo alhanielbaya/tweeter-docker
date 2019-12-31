@@ -3,16 +3,13 @@ import './Tweet.scss';
 import ProfileImage from '../ProfileImage/ProfileImage';
 import { Itweet } from '../../../store/tweets/tweetsTypes';
 import moment from 'moment';
-import Axios from 'axios';
-import io from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../..';
-
-let socket = io.connect('/');
+import Follow from './Follow';
 
 const Tweet = (props: { tweet: Itweet }) => {
   const { name, atSign, date, post, imageUrl, uid: uidToFollow } = props.tweet;
-  const isAuth = useSelector((state: IRootState) => state.user.isAuth);
+  const uid = useSelector((state: IRootState) => state.user.profile.uid);
 
   if (name === '' || post === '') return <div className=''></div>;
 
@@ -21,10 +18,6 @@ const Tweet = (props: { tweet: Itweet }) => {
   }
   function handleLeave(e: any) {
     e.target.innerHTML = moment(date).fromNow();
-  }
-
-  function handleFollow(e: any) {
-    socket.emit('follow user', uidToFollow);
   }
 
   return (
@@ -51,14 +44,7 @@ const Tweet = (props: { tweet: Itweet }) => {
         </div>
 
         <div className='icons'>
-          {isAuth ? (
-            <div className='follow' onClick={(e: any) => handleFollow(e)}>
-              <i className='icon icon-people text-primary'></i>
-              <p>Follow.</p>
-            </div>
-          ) : (
-            ''
-          )}
+          <Follow uid={uid} uidToFollow={uidToFollow}></Follow>
         </div>
       </div>
     </div>

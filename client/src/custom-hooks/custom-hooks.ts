@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { IRootState } from '..';
 import { SET_OFFSET, SET_HASMORE } from '../store/tweets/tweetsReducer';
+import { isAuthenticated } from '../auth/auth';
+import { useState } from 'react';
 
 export function usePageState() {
   const offset = useSelector((state: IRootState) => state.tweets.offset);
@@ -22,4 +24,31 @@ export function usePageState() {
     setOffset,
     setHasMore
   };
+}
+
+export function useSocket() {
+  const socket = useSelector((state: IRootState) => state.socket.socket);
+
+  return socket;
+}
+export function useFollowedUsers() {
+  const followedUsers = useSelector(
+    (state: IRootState) => state.user.followedUsers
+  );
+
+  return followedUsers;
+}
+export function useAuth() {
+  const [isAuth, setIsAuth] = useState(false);
+  isAuthenticated().then(isAuth => {
+    setIsAuth(isAuth);
+  });
+
+  return isAuth;
+}
+
+export function useHasTweets() {
+  const tweets = useSelector((state: IRootState) => state.tweets.tweets);
+
+  return tweets.length && tweets[0].name !== '' ? true : false;
 }

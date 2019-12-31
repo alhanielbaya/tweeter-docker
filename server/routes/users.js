@@ -21,11 +21,7 @@ router.get('/followedUsers', auth, (req, res) => {
   const uid = req.session.user.uid;
 
   followModel.queryFollowedUsers(uid).then(arr => {
-    const uidToFollowArr = arr.map(item => {
-      return item.follows;
-    });
-    console.log(uidToFollowArr);
-    res.json(uidToFollowArr);
+    res.json(arr);
   });
 });
 

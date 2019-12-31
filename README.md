@@ -1,15 +1,20 @@
-# Tweeter
+# Project Title
 
-A twitter clone.
+One Paragraph of project description goes here
 
 ## Getting Started
 
-This project requires docker and docker-compose in order for the dev environment to run.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Getting started
+
+This project uses docker and docker-compose.
 
 
 ```
 docker-compose up --build
 ```
+
 Just type this on the root folder to start the dev environment.
 
 

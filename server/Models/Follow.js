@@ -16,12 +16,25 @@ class Follow extends Model {
       });
     });
   }
+
+  unFollowUser(uidToUnFollow, uid) {
+    return new Promise((resolve, reject) => {
+      const sql = `delete from follows where uid = ${uid} AND follows = ${uidToUnFollow}`;
+
+      this.dbConnection.query(sql, (error, result) => {
+        if (error) throw error;
+        resolve(result);
+      });
+    });
+  }
+
   queryFollowedUsers(uid) {
     return new Promise((resolve, reject) => {
       const sql = `SELECT * FROM follows WHERE uid = ${this.mysql.escape(uid)}`;
 
       this.dbConnection.query(sql, (error, result) => {
-        resolve(result);
+        const newResult = result.map(item => item.follows);
+        resolve(newResult);
       });
     });
   }

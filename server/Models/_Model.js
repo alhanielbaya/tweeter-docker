@@ -4,7 +4,7 @@ class Model {
     this.mysql = require('mysql');
   }
 
-  checkConnection() {
+  connect() {
     this.dbConnection.connect(err => {
       if (err) {
         return console.log(err);

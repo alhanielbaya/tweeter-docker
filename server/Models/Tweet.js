@@ -18,6 +18,18 @@ class Tweet extends Model {
       });
     });
   }
+  queryFollowedTweets(limit = 10, offset = 0, uid) {
+    return new Promise((resolve, reject) => {
+      const sql = `SELECT * FROM tweets WHERE uid IN (SELECT follows FROM follows WHERE uid=${uid}) ORDER BY date desc LIMIT ${limit} OFFSET ${offset}`;
+
+      this.dbConnection.query(sql, (err, result) => {
+        if (err) {
+          reject(err);
+        }
+        resolve(result);
+      });
+    });
+  }
 
   addTweet(profile, post) {
     return new Promise((resolve, reject) => {

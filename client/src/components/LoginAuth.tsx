@@ -18,12 +18,6 @@ const LoginAuth = ({ component: Component, ...rest }: any) => {
       )}
     </>
   );
-  // return (
-  //   <Route
-  //     {...rest}
-  //     component={() => <Redirect to='/home'></Redirect>}
-  //   ></Route>
-  // );
 };
 
 export default LoginAuth;

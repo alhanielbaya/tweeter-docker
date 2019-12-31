@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import TweetList from '../TweetsContainer/TweetList/TweetContainer';
 import { IRootState } from '../../..';
 import { setTweets } from '../../../store/tweets/tweetsActions';
-import LoadMore from '../LoadMore/LoadMore';
 import { usePageState } from '../../../custom-hooks/custom-hooks';
-import InfiniteScroll from 'react-infinite-scroller';
 import TweetContainer from '../TweetsContainer/TweetList/TweetContainer';
 
 const Latest = () => {
@@ -14,7 +11,6 @@ const Latest = () => {
   const tweets = useSelector((state: IRootState) => state.tweets.tweets);
   const isPending = useSelector((state: IRootState) => state.tweets.pending);
   const { offset, setOffset, setHasMore, limit } = usePageState();
-  console.log('@@@ from latest');
 
   React.useEffect(() => {
     setHasMore(true);
@@ -28,7 +24,7 @@ const Latest = () => {
         <div className='loading loading-lg' style={{ marginTop: '1rem' }}></div>
       ) : (
         <>
-          <TweetContainer tweets={tweets}></TweetContainer>
+          <TweetContainer tweets={tweets} type='latest'></TweetContainer>
         </>
       )}
     </>

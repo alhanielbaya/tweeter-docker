@@ -5,11 +5,10 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-const userModel = require('./Models/User');
-
 const IN_PROD = process.env.NODE_ENV === 'production' ? true : false;
 
-userModel.checkConnection();
+const userModel = require('./Models/User');
+userModel.connect();
 
 // Body Parser
 app.use(express.json());
@@ -17,14 +16,19 @@ app.use(express.json());
 // Express session
 
 const session = require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
+const options = require('./database/options');
+const connection = require('./database/connect');
+
+var sessionStore = new MySQLStore(options, connection);
 app.use(
   session({
     secret: 'secret shh',
     resave: true,
     saveUninitialized: true,
+    store: sessionStore,
     cookie: {
-      maxAge: 86400000, // one day
-      secure: IN_PROD
+      maxAge: 86400000 // one day
     }
   })
 );
@@ -37,9 +41,23 @@ app.use('/tweets', require('./routes/tweets'));
 const port = process.env.PORT || port;
 
 io.on('connection', function(socket) {
-  socket.on('follow user', function(uidToFollow) {
-    console.log(uidToFollow);
+  const followModel = require('./Models/Follow');
+
+  socket.on('follow user', function(data) {
+    const { uid, uidToFollow } = data;
+    followModel.followUser(uidToFollow, uid).then(() => {
+      followModel.queryFollowedUsers(uid).then(followedUsers => {
+        socket.emit('follow success', followedUsers);
+      });
+    });
   });
-  console.log('connected user');
+  socket.on('unfollow user', function(data) {
+    const { uid, uidToUnFollow } = data;
+    followModel.unFollowUser(uidToUnFollow, uid).then(() => {
+      followModel.queryFollowedUsers(uid).then(followedUsers => {
+        socket.emit('unfollow success', followedUsers);
+      });
+    });
+  });
 });
 server.listen(port, () => console.log(`Server running on port ${port}`));

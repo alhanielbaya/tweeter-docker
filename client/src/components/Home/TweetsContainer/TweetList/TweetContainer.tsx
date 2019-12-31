@@ -3,18 +3,18 @@ import TweetList from './TweetList/TweetList';
 
 import { Itweet } from '../../../../store/tweets/tweetsTypes';
 import LoadMore from '../../LoadMore/LoadMore';
-import { usePageState } from '../../../../custom-hooks/custom-hooks';
+import { useHasTweets } from '../../../../custom-hooks/custom-hooks';
 
-const TweetContainer = (props: { tweets: Itweet[] }) => {
+const TweetContainer = (props: { tweets: Itweet[]; type: string }) => {
   const { tweets } = props;
-  const { limit } = usePageState();
+  const hasTweets = useHasTweets();
 
   return (
     <>
-      {tweets.length ? (
+      {hasTweets ? (
         <>
           <TweetList tweets={tweets}></TweetList>
-          <LoadMore />
+          <LoadMore type={props.type} />
         </>
       ) : (
         ' '

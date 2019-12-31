@@ -15,7 +15,7 @@ services:
 
   api:
     container_name: tc-api
-    command: npm run startDev
+    command: npm run start
     build: ./server
     working_dir: /usr/src/twitter-clone-api
     env_file:
@@ -26,10 +26,12 @@ services:
       - ./server:/usr/src/twitter-clone-api
     networks:
       - tc-network
+    depends_on:
+      - db
 
   client:
     container_name: twitter-clone
-    command: npm start
+    command: npm run start
     build: ./client
     working_dir: /usr/src/twitter-clone
     ports:
@@ -40,6 +42,9 @@ services:
       - api
     networks:
       - tc-network
+    depends_on:
+      - api
+      - db
 
 networks:
   tc-network:

@@ -1,5 +1,4 @@
 import { ItweetsState, ItweetsAction } from './tweetsTypes';
-import io from 'socket.io-client';
 
 export const SET_TWEETS = 'SET_TWEETS';
 export const APPEND_TWEETS = 'APPEND_TWEETS';
@@ -11,7 +10,7 @@ const initialState: ItweetsState = {
   tweets: [
     { imageUrl: '', name: '', atSign: '', date: '', post: '', tid: 0, uid: 0 }
   ],
-  pending: false,
+  pending: true,
   limit: 10,
   offset: 0,
   hasMore: true

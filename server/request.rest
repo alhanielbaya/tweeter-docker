@@ -6,13 +6,16 @@ Content-Type: application/json
         "email": "john@gmail.com",
         "name" : "John Doe",
         "imageUrl": "none",
-        "atSign" : "@John"
+        "atSign" : "John"
     }
 }
 
 ###
 
 GET http://localhost:8000/tweets/latest
+
+###
+GET http://localhost:8000/tweets/followed
 
 ###
 GET http://localhost:8000/users/followedUsers
@@ -25,7 +28,21 @@ POST http://localhost:8000/users/follow
 Content-Type: application/json
 
 {
-    "uidToFollow": 2
+    "uidToFollow": 1
+}
+
+###
+POST http://localhost:8000/tweets/post
+Content-Type: application/json
+
+{
+    "profile": {
+        "email": "john@gmail.com",
+        "name" : "John Doe",
+        "imageUrl": "none",
+        "atSign" : "John"
+    },
+    "post": "Hello guys"
 }
 
 ###

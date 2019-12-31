@@ -5,9 +5,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { applyMiddleware, createStore, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -20,15 +20,20 @@ import { tweetsReducer } from './store/tweets/tweetsReducer';
 import { IuserState } from './store/user/userTypes';
 import { ItweetsState } from './store/tweets/tweetsTypes';
 import thunk from 'redux-thunk';
+import { socketReducer } from './store/socketReducer';
 
 export interface IRootState {
   user: IuserState;
   tweets: ItweetsState;
+  socket: {
+    socket: any;
+  };
 }
 
 const rootReducer = combineReducers({
   user: userReducer,
-  tweets: tweetsReducer
+  tweets: tweetsReducer,
+  socket: socketReducer
 });
 const store = createStore(
   rootReducer,
@@ -48,6 +53,6 @@ ReactDOM.createRoot(root).render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.register();
 
 // hrllo

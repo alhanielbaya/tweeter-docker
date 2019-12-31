@@ -20,7 +20,3 @@ export async function googleSuccess(
 
   login(data, cb);
 }
-
-export function googleFailure(response: any) {
-  console.log(response);
-}

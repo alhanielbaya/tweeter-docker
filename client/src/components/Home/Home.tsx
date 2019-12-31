@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import './Home.scss';
 import Nav from './Nav/Nav';
 import TweetBox from './TweetBox/TweetBox';

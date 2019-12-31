@@ -1,5 +1,4 @@
 import { IuserState } from './userTypes';
-import io from 'socket.io-client';
 
 export const SET_PROFILE = 'SET_PROFILE';
 export const SET_AUTH = 'SET_AUTH';

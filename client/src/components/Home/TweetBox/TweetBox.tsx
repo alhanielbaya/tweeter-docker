@@ -9,9 +9,10 @@ import { usePageState } from '../../../custom-hooks/custom-hooks';
 
 const TweetBox = () => {
   const dispatch = useDispatch();
-  const { setHasMore, setOffset, offset, limit } = usePageState();
+  const { setHasMore, setOffset, limit } = usePageState();
 
   const isAuth = useSelector((state: IRootState) => state.user.isAuth);
+  const isPending = useSelector((state: IRootState) => state.tweets.pending);
   const profile = useSelector((state: IRootState) => state.user.profile);
 
   const imageUrl = useSelector(
@@ -47,7 +48,7 @@ const TweetBox = () => {
 
   return (
     <div className='tweet-box-container'>
-      {!isAuth ? (
+      {!isAuth && !isPending ? (
         <div className='toast toast-primary follow-toast' id='follow-toast'>
           <button
             className='btn btn-clear float-right'

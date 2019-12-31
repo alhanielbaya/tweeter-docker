@@ -20,6 +20,21 @@ router.get('/latest', (req, res) => {
       res.json({ error: err });
     });
 });
+router.get('/followed', auth, (req, res) => {
+  const limit = req.query.limit;
+  const offset = req.query.offset;
+  const uid = req.session.user.uid;
+
+  tweetModel
+    .queryFollowedTweets(limit, offset, uid)
+    .then(tweets => {
+      res.json({ tweets: tweets });
+    })
+    .catch(err => {
+      res.sendStatus(500);
+      res.json({ error: err });
+    });
+});
 
 router.post('/post', auth, (req, res) => {
   const profile = { uid: req.session.user.uid, ...req.body.profile };
