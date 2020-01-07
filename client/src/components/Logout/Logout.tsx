@@ -6,7 +6,7 @@ const Logout = () => {
   const history = useHistory();
 
   React.useEffect(() => {
-    Axios.delete('auth/logout');
+    Axios.delete('http://localhost:8000/auth/logout');
     history.push('/home');
   });
 

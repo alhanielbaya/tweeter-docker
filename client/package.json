@@ -44,7 +44,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://tc-api:8000",
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/history": "^4.7.3",

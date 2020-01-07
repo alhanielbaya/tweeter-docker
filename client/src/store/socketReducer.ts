@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 
 const initialState = {
-  socket: io.connect('/')
+  socket: io.connect('http://localhost:8000/')
 };
 
 interface action {
